@@ -50,31 +50,34 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Column(
-            children: <Widget>[
-              _qrcodeFile.isEmpty
-                  ? Image.asset(
-                      'images/1559788943.png',
-                    )
-                  : Image.file(File(_qrcodeFile)),
-              ElevatedButton(
-                child: Text("Select file"),
-                onPressed: _getPhotoByGallery,
+        appBar: AppBar(title: const Text('Plugin example app')),
+        body: Column(
+          children: <Widget>[
+            _qrcodeFile.isEmpty
+                ? Expanded(flex: 2, child: Image.asset('images/1559788943.png'))
+                : Expanded(flex: 2, child: Image.file(File(_qrcodeFile))),
+            Expanded(
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    child: Text("Select file from gallery"),
+                    onPressed: _getImageFromGallery,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(24),
+                    child: Text('Qr Code data: $_data\n'),
+                  ),
+                ],
               ),
-              Text('Qr Code data: $_data\n'),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  void _getPhotoByGallery() {
-    Stream.fromFuture(picker.getImage(source: ImageSource.gallery))
+  Future<void> _getImageFromGallery() async {
+    Stream.fromFuture(picker.pickImage(source: ImageSource.gallery))
         .flatMap((file) {
       setState(() {
         _qrcodeFile = file.path;
