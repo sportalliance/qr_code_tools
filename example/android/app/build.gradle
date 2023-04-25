@@ -28,6 +28,8 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     compileSdkVersion 33
 
+    namespace 'com.aifeii.qrcode.tools_example'
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
