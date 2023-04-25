@@ -1,3 +1,10 @@
+### 0.1.1
+
+* Bump Kotlin to 1.8.20
+* Add namespace property for compatibility with AGP 8
+* Bump compileSDK to 33
+* Disable Jetifier
+
 ### 0.1.0
 
 * Update min Dart to 2.18.5

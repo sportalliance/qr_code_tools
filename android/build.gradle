@@ -2,7 +2,7 @@ group 'com.aifeii.qrcode.tools'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.7.20'
+    ext.kotlin_version = '1.8.20'
     repositories {
         google()
         mavenCentral()
@@ -25,7 +25,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
+
+    namespace = "com.aifeii.qrcode.tools"
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
