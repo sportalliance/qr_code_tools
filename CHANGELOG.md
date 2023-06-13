@@ -1,3 +1,7 @@
+### 0.1.2
+
+* Bump Dart upper constraint to 4.0.0
+
 ### 0.1.1
 
 * Bump Kotlin to 1.8.20

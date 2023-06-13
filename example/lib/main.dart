@@ -79,10 +79,14 @@ class _MyAppState extends State<MyApp> {
   Future<void> _getImageFromGallery() async {
     Stream.fromFuture(picker.pickImage(source: ImageSource.gallery))
         .flatMap((file) {
-      setState(() {
-        _qrcodeFile = file.path;
-      });
-      return Stream.fromFuture(QrCodeToolsPlugin.decodeFrom(file.path));
+      if (file != null) {
+        setState(() {
+          _qrcodeFile = file.path;
+        });
+        return Stream.fromFuture(QrCodeToolsPlugin.decodeFrom(file.path));
+      } else {
+        return Stream.empty();
+      }
     }).listen((data) {
       setState(() {
         _data = data;
